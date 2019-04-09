@@ -30,21 +30,3 @@
     background-color:#333;
     color:#fff;
 }
-
-.broken {
-    position:relative;
-    top:0;
-    left:0;
-    right:0;
-    transition:2s;
-    overflow:visible;
-    z-index:999;
-}
-
-body, html {
-    height:100vh !important;
-    width:100vw !important;
-    overflow:hidden !important;
-    left:0 !important;
-    top:0 !important;
-}
