@@ -53,9 +53,11 @@
          var greetingResult = document.getElementsByClassName("greetingsBoxHolder")[0];
 
         greeting.addEventListener("keyup", function() {
-            alert('hello');
-            //greetingResult.innerHTML = greeting.innerHTML;  
-})
+            greetingResult.innerHTML = greeting.value; 
+            if (greetingResult.innerHTML == ""){
+                greetingResult.innerHTML = "A funny text"; 
+            } 
+        })
         </script>
     </div>
     <!-- END OF Part 1 -->
@@ -96,6 +98,32 @@
             </table>
         </div>
         <script>
+            var pizzaTable = document.getElementById("pizzaOrders");
+            var tableBody = document.querySelector("tbody");
+            var emptyRow = document.getElementById("emptyRow");
+            
+
+            tableBody.addEventListener("keyup", function(e) {
+                if (e.key === "Enter") {
+
+                    var name = document.getElementById("name"); 
+                    var pizza = document.getElementById("pizza"); 
+                    var size = document.getElementById("size");
+                    var remarks = document.getElementById("remarks");
+
+                    if (name.value != "" && pizza.value != "" && size.value != "") {
+                            var newRow = emptyRow.cloneNode(true);
+                            tableBody.insertBefore(newRow, emptyRow);
+                            name.value = "";
+                            pizza.value = "";
+                            size.value = ""; 
+                        
+                    } else {
+                        alert("You need to fill out the name, pizza and size input fields!"); 
+                        }
+                }
+            })
+
             // Write your code here
         </script>
     </div>
@@ -125,6 +153,38 @@
 
         </div>
         <script>
+
+            function makeList() {
+                var pList = document.getElementById("listHolder");
+                pList.innerHTML = ""; 
+
+                var listData = [
+                    "Pasta",
+                    "Tomato Sauce",
+                    "Cheese",
+                    "Choose your final ingredient"
+                ];
+
+                var listContainer = document.createElement('div');
+                pList.appendChild(listContainer);
+                var ingredientsList = document.createElement('ul');
+                listContainer.appendChild(ingredientsList);
+
+                for (var i = 0; i < listData.length; i++) {
+
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = listData[i];
+                    ingredientsList.appendChild(listItem);
+                }   
+                var listInput = document.createElement("input");
+                listInput.setAttribute("type", "text"); 
+                ingredientsList.appendChild(listInput); 
+
+        }
+        var buttonLaunchMe = document.getElementById("launchMe");
+        buttonLaunchMe.addEventListener("click", makeList);
+         
+
             // Write your code here
         </script>
     </div>
